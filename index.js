@@ -3,8 +3,11 @@
 const fetchHercai = require('./fetchHercai');
 const chalk = require('chalk');
 
-// Ambil pertanyaan dari argumen command line
-const question = process.argv[2];
+// Ambil semua argumen dari baris perintah, dimulai dari indeks 2
+const args = process.argv.slice(2);
+
+// Gabungkan semua argumen menjadi satu pertanyaan
+const question = args.join(' ');
 
 // Pastikan pertanyaan tersedia sebelum melakukan fetch
 if (question) {
