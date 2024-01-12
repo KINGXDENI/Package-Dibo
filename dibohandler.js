@@ -1,4 +1,4 @@
-// fetchHercai.js
+// dibohandler.js
 
 const fetch = require('node-fetch');
 const chalk = require('chalk');
@@ -6,7 +6,7 @@ const { color } = require('./color');
 
 const baseUrl = 'https://hercai.onrender.com/v3/hercai?question=';
 
-async function fetchHercai(question) {
+async function dibohandler(question) {
     try {
         const spinner = createSpinner();
 
@@ -40,4 +40,4 @@ function stopSpinner(spinnerId) {
     process.stdout.write('\r' + ' '.repeat(30) + '\r'); // Clear the spinner line
 }
 
-module.exports = fetchHercai;
+module.exports = dibohandler;

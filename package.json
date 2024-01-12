@@ -1,6 +1,6 @@
 {
   "name": "dibo-fetch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Fetch answers with Dibo, created by Muh. Deni Setiawan",
   "main": "index.js",
   "scripts": {
