@@ -1,35 +1,39 @@
-// dibo-fetch.js
+// dibohandler.js
 
 const fetch = require('node-fetch');
+const chalk = require('chalk');
 const {
     color
 } = require('./color');
 
 const baseUrl = 'https://hercai.onrender.com/v3/hercai?question=';
 
-function dibohandler(question) {
+async function dibohandlercli(question) {
+    try {
+        const spinner = createSpinner();
+
+        // Start fetching
+        const response = await fetch(baseUrl + encodeURIComponent(question));
+        const data = await response.json();
+
+        // Stop the spinner
+        stopSpinner(spinner);
+        console.log(color(`\n< ================================================== >`, 'green'));
+        console.log(chalk.black(chalk.bgGreenBright('[ DIBO ]')), chalk.black(chalk.bgGreen(new Date)), chalk.whiteBright(`\n${data.reply}`));
+    } catch (error) {
+        console.error(chalk.red('Error Searching:', error.message));
+    }
+}
+
+async function dibohandler(question) {
     return new Promise(async (resolve, reject) => {
         try {
-            const spinner = createSpinner();
-
-            // Start fetching
             const response = await fetch(baseUrl + encodeURIComponent(question));
             const data = await response.json();
-
-            // Stop the spinner
-            stopSpinner(spinner);
-
-            const result = {
-                date: new Date(),
-                reply: data.reply
-            };
-
-            console.log(color(`\n< ================================================== >`, 'green'));
-            console.log(color(`[ DIBO ]`, 'black', 'bgGreenBright'), color(`[${result.date}]`, 'black', 'bgGreen'), color(`\n${result.reply}`, 'whiteBright'));
-
-            resolve(result);
+            resolve(data.reply);
         } catch (error) {
-            reject(new Error(`Error Searching: ${error.message}`));
+            console.error(chalk.red('Error Searching:', error.message));
+            reject(error);
         }
     });
 }
@@ -39,7 +43,7 @@ function createSpinner() {
     let i = 0;
 
     const intervalId = setInterval(() => {
-        process.stdout.write('\r' + color(`[SEARCHING... ${spinner[i]}]`, 'green'));
+        process.stdout.write('\r' + chalk.green(`[SEARCHING... ${spinner[i]}]`));
         i = (i + 1) % spinner.length;
     }, 100);
 
@@ -51,4 +55,7 @@ function stopSpinner(spinnerId) {
     process.stdout.write('\r' + ' '.repeat(30) + '\r'); // Clear the spinner line
 }
 
-module.exports = dibohandler;
+module.exports = {
+    dibohandler,
+    dibohandlercli
+};

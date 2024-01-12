@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 
-const dibohandler = require('./dibohandler');
+const {
+    dibohandler,
+    dibohandlercli
+} = require('./dibohandler');
 const chalk = require('chalk');
 
 const dibo = (question) => {
     // Pastikan pertanyaan tersedia sebelum melakukan fetch
     if (question) {
-        dibohandler(question);
+        return dibohandler(question);
     } else {
-        console.error(chalk.red('Usage: dibo <question>'));
+       console.error(chalk.red('Gagal mengambil jawaban dari Dibo'));
     }
 };
 
@@ -19,9 +22,11 @@ if (require.main === module) {
 
     // Gabungkan semua argumen menjadi satu pertanyaan
     const question = args.join(' ');
-
-    // Panggil fungsi dibo dengan pertanyaan yang telah diambil
-    dibo(question);
+    if (question) {
+        return dibohandlercli(question);
+    } else {
+        console.error(chalk.red('Usage: dibo <question>'));
+    }
 }
 
 // Ekspor fungsi dibo untuk digunakan di file lain

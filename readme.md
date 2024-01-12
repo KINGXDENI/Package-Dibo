@@ -25,9 +25,25 @@ npm install -g dibo-fetch
 ```
 
 ## Usage
-
+- **For CLI**:
 ```bash
 dibo <Your Question>
+```
+
+- **For Require**:
+```javascript
+const dibo = require('dibo-fetch');
+
+async function exampleDibo() {
+    try {
+        const reply = await dibo("Apa kabar hari ini?");
+        console.log('Jawaban dari Dibo:', reply);
+    } catch (error) {
+        console.error(chalk.red('Gagal mengambil jawaban dari Dibo:', error.message));
+    }
+}
+
+exampleDibo();
 ```
 ## Example
 
