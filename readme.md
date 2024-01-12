@@ -19,4 +19,13 @@ Dibo Fetch is a command-line tool that allows you to fetch answers from the Dibo
 Make sure you have [Node.js](https://nodejs.org/) installed.
 
 ```bash
-npm install -g dibo-fetch
+npm install -g dibo-fetch 
+```
+
+## Usage
+
+```bash
+dibo <Your Question>
+```
+
+
