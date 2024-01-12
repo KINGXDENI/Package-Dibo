@@ -1,28 +1,37 @@
-// dibohandler.js
+// dibo-fetch.js
 
 const fetch = require('node-fetch');
-const chalk = require('chalk');
 const {
     color
 } = require('./color');
 
 const baseUrl = 'https://hercai.onrender.com/v3/hercai?question=';
 
-async function dibohandler(question) {
-    try {
-        const spinner = createSpinner();
+function dibohandler(question) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const spinner = createSpinner();
 
-        // Start fetching
-        const response = await fetch(baseUrl + encodeURIComponent(question));
-        const data = await response.json();
+            // Start fetching
+            const response = await fetch(baseUrl + encodeURIComponent(question));
+            const data = await response.json();
 
-        // Stop the spinner
-        stopSpinner(spinner);
-        console.log(color(`\n< ================================================== >`, 'green'));
-        console.log(chalk.black(chalk.bgGreenBright('[ DIBO ]')), chalk.black(chalk.bgGreen(new Date)), chalk.whiteBright(`\n${data.reply}`));
-    } catch (error) {
-        console.error(chalk.red('Error Searching:', error.message));
-    }
+            // Stop the spinner
+            stopSpinner(spinner);
+
+            const result = {
+                date: new Date(),
+                reply: data.reply
+            };
+
+            console.log(color(`\n< ================================================== >`, 'green'));
+            console.log(color(`[ DIBO ]`, 'black', 'bgGreenBright'), color(`[${result.date}]`, 'black', 'bgGreen'), color(`\n${result.reply}`, 'whiteBright'));
+
+            resolve(result);
+        } catch (error) {
+            reject(new Error(`Error Searching: ${error.message}`));
+        }
+    });
 }
 
 function createSpinner() {
@@ -30,7 +39,7 @@ function createSpinner() {
     let i = 0;
 
     const intervalId = setInterval(() => {
-        process.stdout.write('\r' + chalk.green(`[SEARCHING... ${spinner[i]}]`));
+        process.stdout.write('\r' + color(`[SEARCHING... ${spinner[i]}]`, 'green'));
         i = (i + 1) % spinner.length;
     }, 100);
 
