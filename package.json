@@ -1,0 +1,22 @@
+{
+  "name": "dibo-fetch",
+  "version": "1.0.0",
+  "description": "Fetch answers with Dibo, created by Muh. Deni Setiawan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "dibo": "./index.js"
+  },
+  "keywords": ["dibo", "fetch", "question", "answer"],
+  "author": "Muh. Deni Setiawan",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "node-fetch": "^2.6.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
