@@ -27,7 +27,7 @@ npm install -g dibo-fetch
 ## Usage
 
 ```bash
-dibo "How are you?"
+dibo <Your Question>
 ```
 
 
