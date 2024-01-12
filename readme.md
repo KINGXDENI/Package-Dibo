@@ -45,6 +45,6 @@ async function exampleDibo() {
 
 exampleDibo();
 ```
-## Example
+## Example CLI
 
 <img alt="Dibo Fetch Example" src="https://media.discordapp.net/attachments/1184740016883236894/1195257999317540925/tutorial_dibo.gif?ex=65b355c1&amp;is=65a0e0c1&amp;hm=64314aa392173fd0d672da199323487abddac3e7f01d1c44c319cb3fea1dc59a&amp;=&amp;width=1155&amp;height=571">
