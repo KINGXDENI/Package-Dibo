@@ -2,7 +2,9 @@
 
 const fetch = require('node-fetch');
 const chalk = require('chalk');
-const { color } = require('./color');
+const {
+    color
+} = require('./color');
 
 const baseUrl = 'https://hercai.onrender.com/v3/hercai?question=';
 
@@ -17,7 +19,7 @@ async function dibohandler(question) {
         // Stop the spinner
         stopSpinner(spinner);
         console.log(color(`\n< ================================================== >`, 'green'));
-        console.log(chalk.black(chalk.bgGreenBright('[ DIBO ]')), chalk.black(chalk.bgGreen(new Date)),  chalk.whiteBright(`\n${data.reply}`));
+        console.log(chalk.black(chalk.bgGreenBright('[ DIBO ]')), chalk.black(chalk.bgGreen(new Date)), chalk.whiteBright(`\n${data.reply}`));
     } catch (error) {
         console.error(chalk.red('Error Searching:', error.message));
     }
