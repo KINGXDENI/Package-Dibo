@@ -31,5 +31,7 @@ dibo <Your Question>
 ```
 ## Video Example
 
-Check out the video example [here](https://cdn.discordapp.com/attachments/1184740016883236894/1195255780438446110/tutorial_dibo.mp4?ex=65b353b0&is=65a0deb0&hm=b9933e08cf5186f9ccf8de04f94b0b72e306310fadad3855cb82777b78c53975&).
-
+<video width="320" height="240" controls>
+  <source src="https://cdn.discordapp.com/attachments/1184740016883236894/1195255780438446110/tutorial_dibo.mp4?ex=65b353b0&is=65a0deb0&hm=b9933e08cf5186f9ccf8de04f94b0b72e306310fadad3855cb82777b78c53975&" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
